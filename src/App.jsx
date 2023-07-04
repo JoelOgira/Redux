@@ -1,20 +1,21 @@
-import Counter from "./features/counter/Counter";
-import Counter2 from "./features/counter2/Counter2";
-import PostsList from "./features/posts/PostsList";
 import { Routes, Route } from "react-router-dom";
+import Windfall from "./Windfall/Windfall";
+import Header from "./Navigation/Header";
+import Footer from "./Navigation/Footer";
+import CounterDisplay from "./Counter/CounterDisplay";
+import PostsDisplay from "./posts/PostsDisplay";
 
 const App = () => {
   return (
-    <div className=" min-h-[100dvh]">
-      <div className="container mx-auto pt-10 px-5 md:w-1/2">
-        <div className="flex flex-col">
-          <Routes>
-            <Route path="/" element={<PostsList />} />
-            <Route path="/count" element={<Counter />} />
-            <Route path="/count2" element={<Counter2 />} />
-          </Routes>
-        </div>
-      </div>
+    <div className="min-h-[100dvh] scroll-smooth">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Windfall />} />
+        <Route path="/posts" element={<PostsDisplay />} />
+        <Route path="/users" element  />
+        <Route path="/counter" element={<CounterDisplay />} />
+      </Routes>
+      <Footer />
     </div>
   )
 }
