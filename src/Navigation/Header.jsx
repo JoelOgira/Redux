@@ -9,7 +9,7 @@ const Header = () => {
     }
 
     return (
-        <div className="top-0 opacity-80 py-8 px-6 w-full bg-[#212529]  border-b-4 border-[#d2691e] md:px-8">
+        <div className="top-0 py-8 px-6 w-full bg-[#212529]  border-b-4 border-[#d2691e] md:px-8">
             <div className="flex flex-row space-x-10 justify-between container mx-auto text-white lg:w-4/6">
                 <div>
                     < Link to='/windfall' className="font-semibold text-lg hover:border-b-2 border-[#d2691e]">
@@ -23,7 +23,7 @@ const Header = () => {
                             onClick={handleHidden}
                             className={`pl-16 sm:hidden`}
                         >
-                            <FiAlignRight className="text-[#d2691e] text-3xl" />
+                            <FiAlignRight className="text-[#d2691e] text-3xl hover:text-white" />
                         </button>
                     </div>
 
