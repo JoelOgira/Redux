@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 #jumbotron {
-    background: url("../public/images/semi-opened-laptop-computer-turned-on-on-table-2047905.jpg") no-repeat center center fixed;
+    background: url("/images/semi-opened-laptop-computer-turned-on-on-table-2047905.jpg") no-repeat center center fixed;
     background-size: cover;
 }
