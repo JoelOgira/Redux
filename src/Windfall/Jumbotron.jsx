@@ -1,6 +1,6 @@
 const Jumbotron = () => {
     return (
-        <div>
+        <>
             <div id="jumbotron" className="h-[400px] md:h-[500px]">
                 <div className="py-8 px-6 w-full md:px-8">
                     <div className="flex flex-col space-y-6 justify-center items-center text-[#d2691e] container mx-auto lg:w-4/6 lg:justify-end lg:items-end">
@@ -64,7 +64,7 @@ const Jumbotron = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
