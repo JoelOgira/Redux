@@ -38,8 +38,8 @@ const Header = () => {
                             <Link to="/posts">
                                 Posts
                             </Link>
-                            <Link to="/users">
-                                Users
+                            <Link to="/todo">
+                                Todo
                             </Link>
                             <Link to="/counter">
                                 Counter
@@ -47,15 +47,15 @@ const Header = () => {
                         </div>
                     }
 
-                    <div className="hidden flex-col justify-center items-start space-y-3 sm:flex sm:items-center sm:space-x-5 sm:space-y-0 sm:flex-row">
+                    <div className="hidden sm:flex sm:items-center sm:space-x-5 sm:space-y-0 sm:flex-row">
                         <Link to="/" className="hover:text-[#d2691e]">
                             Home
                         </Link>
                         <Link to="/posts" className="hover:text-[#d2691e]">
                             Posts
                         </Link>
-                        <Link to="/users" className="hover:text-[#d2691e]">
-                            Users
+                        <Link to="/todo" className="hover:text-[#d2691e]">
+                            Todo
                         </Link>
                         <Link to="/counter" className="hover:text-[#d2691e]">
                             Counter
