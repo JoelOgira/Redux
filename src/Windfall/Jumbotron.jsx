@@ -2,7 +2,7 @@ const Jumbotron = () => {
     return (
         <>
             <div id="jumbotron" className="h-[400px] md:h-[500px]">
-                <div className="py-8 px-6 w-full md:px-8">
+                <div className="py-8 px-4 w-full md:px-8">
                     <div className="flex flex-col space-y-6 justify-center items-center text-[#d2691e] container mx-auto lg:w-4/6 lg:justify-end lg:items-end">
                         <h1 className="text-center font-bold text-4xl">
                             Affordable Professional Web Design
@@ -15,7 +15,7 @@ const Jumbotron = () => {
             </div>
 
             <div className="w-full bg-[#212529] text-white">
-                <div className="flex flex-col space-y-5 sm:flex-row container mx-auto px-6 py-6 sm:space-y-0 sm:space-x-12 lg:w-4/6 md:px-8">
+                <div className="flex flex-col space-y-5 sm:flex-row container mx-auto px-4 py-6 sm:space-y-0 sm:space-x-12 lg:w-4/6 md:px-8">
                     <div className="flex flex-row justify-center items-center sm:w-2/6 sm:justify-start">
                         <p className="text-xl font-extrabold capitalize text-center">
                             Subscribe to our Newsletter
@@ -36,8 +36,8 @@ const Jumbotron = () => {
             </div>
 
             <div className="bg-gray-300">
-                <div className="w-full container mx-auto lg:w-4/6">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-8 px-8 py-12">
+                <div className="container mx-auto lg:w-4/6">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-8 px-4 py-12">
                         <div className="bg-white shadow-xl rounded-md p-3 flex flex-col space-y-4 mb-6 justify-center items-center sm:mb-0">
                             <img src="/images/html.png" alt="html logo" className="h-[150px] hover:-translate-y-1" />
                             <h3 className="font-extrabold rounded text-xl">HTML 5</h3>
