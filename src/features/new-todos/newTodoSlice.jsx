@@ -23,6 +23,8 @@ const newTodoSlice = createSlice({
     }
 });
 
+export const selectAllTodos = (state) => state.newTodo.todos;
+
 export const { addTodo, deleteTodo } = newTodoSlice.actions;
 
 export default newTodoSlice.reducer;
