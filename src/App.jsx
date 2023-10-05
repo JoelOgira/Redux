@@ -1,27 +1,37 @@
-import { Routes, Route } from "react-router-dom";
-import Windfall from "./Windfall/Windfall";
-import Header from "./Navigation/Header";
-import Footer from "./Navigation/Footer";
-import CounterDisplay from "./Counter/CounterDisplay";
-import PostsDisplay from "./posts/PostsDisplay";
-import TodoList from "./Todos/TodoList";
-import SinglePostPage from "./posts/SinglePostPage";
-import AddPostForm from "./posts/AddPostForm";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Hesabu from "./reducer/Hesabu";
+import CounterDisplay from "./features/counter/CounterDisplay";
+import PostsList from "./features/posts/PostsList";
+import SinglePost from "./features/posts/SinglePost";
+import Layout from "./components/Layout";
+import AddPostForm from "./features/posts/AddPostForm";
+import EditPostForm from "./features/posts/EditPostForm";
+import UsersList from "./features/users/UsersList";
+import UserPage from "./features/users/UserPage";
 
 const App = () => {
   return (
-    <div className="App min-h-[100dvh] scroll-smooth bg-gray-300">
-      <Header />
-        <Routes>
-          <Route path="/" element={<Windfall />} />
-          <Route path="/posts" element={<PostsDisplay />} />
-          <Route path="/new_post" element={<AddPostForm />} />
-          <Route path="/post:id" element={<SinglePostPage />} />
-          <Route path="/todo" element={<TodoList />} />
-          <Route path="/counter" element={<CounterDisplay />} />
-        </Routes>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<PostsList />} />
+        <Route path="/hesabu" element={<Hesabu />} />
+        <Route path="/counter" element={<CounterDisplay />} />
+
+        <Route path="post">
+          <Route index element={<AddPostForm />} />
+          <Route path=":postId" element={<SinglePost />} />
+          <Route path="edit/:postId" element={<EditPostForm />} />
+        </Route>
+
+        <Route path="users">
+          <Route index element={<UsersList />} />
+          <Route path=":userId" element={<UserPage />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+
+      </Route>
+    </Routes >
   )
 }
 
