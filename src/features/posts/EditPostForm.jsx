@@ -92,7 +92,7 @@ const EditPostForm = () => {
                             />
                         </div>
                         <button disabled={!canSave} className="grid content-center gap-x-5 py-2 px-6 rounded bg-slate-800 mr-auto text-white hover:bg-slate-600">
-                            Edit Post
+                            Save
                         </button>
                     </form>
                 }
