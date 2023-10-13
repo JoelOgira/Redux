@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { FiAlignRight } from 'react-icons/fi';
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getPostsCount, increaseCount } from "../features/posts/postsSlice";
 
 const Header = () => {
     const [ isHidden, setIsHidden ] = useState(true);
     const handleHidden = () => {
         setIsHidden(!isHidden);
     }
+
+    const dispatch = useDispatch();
+    const count = useSelector(getPostsCount);
 
     return (
         <div className="top-0 py-8 w-full bg-[#212529]  border-b-4 border-[#d2691e]">
@@ -32,7 +37,7 @@ const Header = () => {
                         ?
                         ""
                         :
-                        <div className="flex flex-col justify-end items-end pt-4 pr-[0.125rem] space-y-3 sm:hidden">
+                        <div className="flex flex-col justify-end items pt-4 pr-[0.125rem] space-y-3 sm:hidden">
                             <Link onClick={handleHidden} to="/">
                                 Home
                             </Link>
@@ -44,7 +49,7 @@ const Header = () => {
                             </Link>
                             <Link onClick={handleHidden} to="/counter">
                                 Counter
-                            </Link>
+                            </Link>                            
                         </div>
                     }
 
@@ -61,6 +66,9 @@ const Header = () => {
                         <Link to="/counter" className="hover:text-[#d2691e]">
                             Counter
                         </Link>
+                        <button onClick={() => dispatch(increaseCount())}  className="hover:text-[#d2691e]">
+                            {count}
+                        </button>                        
                     </div>
                 </div>
             </div>
