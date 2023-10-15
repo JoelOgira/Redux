@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { FiAlignRight } from 'react-icons/fi';
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getPostsCount, increaseCount } from "../features/posts/postsSlice";
 
 const Header = () => {
     const [ isHidden, setIsHidden ] = useState(true);
@@ -10,15 +8,12 @@ const Header = () => {
         setIsHidden(!isHidden);
     }
 
-    const dispatch = useDispatch();
-    const count = useSelector(getPostsCount);
-
     return (
         <div className="top-0 py-8 w-full bg-[#212529]  border-b-4 border-[#d2691e]">
             <div className={` ${isHidden ? 'items-center' : 'items-start'} px-5 flex justify-between container mx-auto text-white lg:w-4/6`}>
                 <div>
                     < Link to='/' className="flex justify-center items-center space-x-3 font-semibold text-xl">
-                        <span className="text-[#d2691e]">Windfall </span> 
+                        <span className="text-[#d2691e]">Windfall </span>
                         <span>Technologies</span>
                     </Link>
                 </div>
@@ -45,11 +40,14 @@ const Header = () => {
                                 Post
                             </Link>
                             <Link onClick={handleHidden} to="/todo">
-                                Todo
+                                Users
+                            </Link>
+                            <Link to="/todos">
+                                Todos
                             </Link>
                             <Link onClick={handleHidden} to="/counter">
                                 Counter
-                            </Link>                            
+                            </Link>
                         </div>
                     }
 
@@ -63,12 +61,12 @@ const Header = () => {
                         <Link to="/users" className="hover:text-[#d2691e]">
                             Users
                         </Link>
+                        <Link to="/todos" className="hover:text-[#d2691e]">
+                            Todos
+                        </Link>
                         <Link to="/counter" className="hover:text-[#d2691e]">
                             Counter
                         </Link>
-                        <button onClick={() => dispatch(increaseCount())}  className="hover:text-[#d2691e]">
-                            {count}
-                        </button>                        
                     </div>
                 </div>
             </div>
