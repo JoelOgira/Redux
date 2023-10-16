@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectPostById, deletePost } from './postsSlice';
+import { useSelector } from 'react-redux';
+import { selectPostById } from './postsSlice';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import PostAuthor from './PostAuthor';
@@ -8,11 +8,14 @@ import TimeAgo from './TimeAgo';
 import ReactionButtons from './ReactionButtons';
 import DeletePostModal from './DeletePostModal';
 
+import { useDeletePostMutation } from './postsSlice';
+
 const SinglePost = () => {
     const { postId } = useParams();
     const post = useSelector((state) => selectPostById(state, Number(postId)));
-    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [deletePost] = useDeletePostMutation();
 
     const [ isModalOpen, setIsModalOpen ] = useState(false);
 
@@ -24,9 +27,9 @@ const SinglePost = () => {
         setIsModalOpen(false);
     };
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         try {
-            dispatch(deletePost({ id: post?.id })).unwrap();
+            await deletePost({ id: post.id }).unwrap();
             navigate('/');
         } catch (err) {
             console.log('Failed to delete the post', err)
