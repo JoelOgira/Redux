@@ -1,39 +1,38 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updatePost, selectPostById } from '../posts/postsSlice';
+import { useSelector } from "react-redux";
+import { selectPostById } from '../posts/postsSlice';
 import { selectAllUsers } from "../users/usersSlice";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
+import { useUpdatePostMutation } from "./postsSlice";
+
 const EditPostForm = () => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const { postId } = useParams();
     const users = useSelector(selectAllUsers);
+
+    const [updatePost, {isLoading}] = useUpdatePostMutation();
     
     const post = useSelector((state) => selectPostById(state, Number(postId)));
 
     const [ title, setTitle ] = useState(post?.title);
     const [ userId, setUserId ] = useState(post?.userId);
     const [ body, setBody ] = useState(post?.body);
-    const [ addRequestStatus, setAddRequestStatus ] = useState('idle');
 
-    const canSave = [ title, userId, body ].every(Boolean) && addRequestStatus === 'idle';
+    const canSave = [ title, userId, body ].every(Boolean) && !isLoading;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (canSave) {
             try {
-                setAddRequestStatus('pending');
-                dispatch(updatePost({ id: post?.id, title, userId, body, reactions: post?.reactions })).unwrap();
+                await updatePost({ id: post.id, title, body, userId }).unwrap();
                 setTitle('');
                 setUserId('');
                 setBody('');
                 navigate(`/post/${postId}`);
             } catch (err) {
                 console.error('Failed to edit post', err);
-            } finally {
-                setAddRequestStatus('idle')
-            }
+            } 
         }
     }
 
